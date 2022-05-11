@@ -13,8 +13,9 @@ void media(){
     printf("Digite os numeros para a média:\n");
     scanf("%f %f", &num1, &num2);
 
-    float media = (num1+num2)/2;
-    printf("Media: %f", media);
+
+    float soma = num1+num2;
+    printf("Media: %f", soma/2);
 }
 
 void quadrado(){
