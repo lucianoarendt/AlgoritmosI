@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-typedef int Exercicio();
+typedef void Exercicio();
 
 Exercicio *exercicios[6];
 
