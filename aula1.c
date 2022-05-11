@@ -10,7 +10,7 @@ void SetCallbackFunc(int indice, Exercicio *exercicio){
 
 void media(){
     float num1, num2;
-    printf("Digite os numeros para a média:\n");
+    printf("Digite os numeros para a media:\n");
     scanf("%f %f", &num1, &num2);
 
 
