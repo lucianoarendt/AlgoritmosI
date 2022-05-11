@@ -10,7 +10,7 @@ void SetCallbackFunc(int indice, Exercicio *exercicio){
 
 void media(){
     float num1, num2;
-    printf("Digite os numeros:\n");
+    printf("Digite os numeros para a média:\n");
     scanf("%f %f", &num1, &num2);
 
     float media = (num1+num2)/2;
@@ -19,23 +19,26 @@ void media(){
 
 void quadrado(){
     float n;
+    printf("Digite o numero para o quadrado:\n");
     scanf("%f", &n);
 
-    printf("%f", n*n);
+    printf("%f^2 = %f", n, n*n);
 }
 
 void imc(){
     float peso, altura;
+    printf("Digite o peso e a altura:\n");
     scanf("%f %f", &peso, &altura);
 
     float imc = peso/(altura*altura);
 
-    printf("%f", imc);
+    printf("IMC: %f", imc);
 }
 
 void troca(){
     int i, j/*, aux*/;
 
+    printf("Digite os numeros a serem invertidos:\n");
     scanf("%d %d", i, j);
 
     // aux = i;
@@ -51,16 +54,18 @@ void troca(){
 
 void converteTempo(){
     int h, m, s;
+    printf("Insira as horas, minutos e segundos:\n");
     scanf("%d %d %d", &h, &m, &s);
 
-    printf("%d", h*3600+m*60+s);
+    printf("%d s", h*3600+m*60+s);
 }
 
 void msTokmh(){
     float ms;
+    printf("Insira uma velocidade em m/s para conversao:");
     scanf("%f", &ms);
 
-    printf("%f", ms*3.6);
+    printf("%f km/h", ms*3.6);
 }
 
 int main(){
