@@ -13,9 +13,8 @@ void media(){
     printf("Digite os numeros para a media:\n");
     scanf("%f %f", &num1, &num2);
 
-
     float soma = num1+num2;
-    printf("Media: %f", soma/2);
+    printf("Media: %f\n", soma/2);
 }
 
 void quadrado(){
@@ -23,7 +22,7 @@ void quadrado(){
     printf("Digite o numero para o quadrado:\n");
     scanf("%f", &n);
 
-    printf("%f^2 = %f", n, n*n);
+    printf("%f^2 = %f\n", n, n*n);
 }
 
 void imc(){
@@ -33,7 +32,7 @@ void imc(){
 
     float imc = peso/(altura*altura);
 
-    printf("IMC: %f", imc);
+    printf("IMC: %f\n", imc);
 }
 
 void troca(){
@@ -50,7 +49,7 @@ void troca(){
     j = i - j;
     i = i - j;
 
-    printf("i:%d, j:%d", i, j);
+    printf("i:%d, j:%d\n", i, j);
 }
 
 void converteTempo(){
@@ -58,15 +57,15 @@ void converteTempo(){
     printf("Insira as horas, minutos e segundos:\n");
     scanf("%d %d %d", &h, &m, &s);
 
-    printf("%d s", h*3600+m*60+s);
+    printf("%d s\n", h*3600+m*60+s);
 }
 
 void msTokmh(){
     float ms;
-    printf("Insira uma velocidade em m/s para conversao:");
+    printf("Insira uma velocidade em m/s para conversao:\n");
     scanf("%f", &ms);
 
-    printf("%f km/h", ms*3.6);
+    printf("%f km/h\n", ms*3.6);
 }
 
 int main(){
@@ -77,16 +76,22 @@ int main(){
     SetCallbackFunc(4, converteTempo);
     SetCallbackFunc(5, msTokmh);
 
-    printf("Escolha o Exercicio:\n");
-    printf("0: Media\n");
-    printf("1: Quadrado\n");
-    printf("2: IMC\n");
-    printf("3: inverte a com b\n");
-    printf("4: Converte tempo\n");
-    printf("5: Ms para Km/H\n");
 
-    int ex;
-    scanf("%d", &ex);
+    int choice;
+    do {
+      printf("\n\nEscolha o Exercicio:\n");
+      printf("0: Media\n");
+      printf("1: Quadrado\n");
+      printf("2: IMC\n");
+      printf("3: inverte a com b\n");
+      printf("4: Converte tempo\n");
+      printf("5: Ms para Km/H\n");
+      printf(">5: Sair\n");
 
-    exercicios[ex]();
+      scanf("%d", &choice);
+
+      if(choice <= 5){
+        exercicios[choice]();
+      }
+    } while (choice <= 5);
 }
