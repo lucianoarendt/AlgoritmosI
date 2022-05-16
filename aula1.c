@@ -1,11 +1,14 @@
 #include <stdio.h>
+#include <math.h>
+#define numEx 11
 
 typedef void Exercicio();
 
-Exercicio *exercicios[6];
+Exercicio *exercicios[numEx];
 
-void SetCallbackFunc(int indice, Exercicio *exercicio){
-    exercicios[indice] = exercicio;
+int indice = 0;
+void SetCallbackFunc(Exercicio *exercicio){
+    exercicios[indice++] = exercicio;
 }
 
 void media(){
@@ -68,14 +71,87 @@ void msTokmh(){
     printf("%f km/h\n", ms*3.6);
 }
 
-int main(){
-    SetCallbackFunc(0, media);
-    SetCallbackFunc(1, quadrado);
-    SetCallbackFunc(2, imc);
-    SetCallbackFunc(3, troca);
-    SetCallbackFunc(4, converteTempo);
-    SetCallbackFunc(5, msTokmh);
+void distanciaEntreDoisPontos(){
+    float x1, x2, y1, y2;
 
+    printf("Digite x1 y1 x2 y2\n");
+
+    scanf("%f %f %f %f", &x1, &y1, &x2, &y2);
+
+    printf("A distancia e: %f\n", sqrt(pow((x1 - x2), 2) + pow((y1 - y2), 2)));
+}
+
+void volumeEsfera(){
+    float r;
+    printf("Digite o raio:\n");
+
+    scanf("%f", &r);
+
+    printf("O volume e: %f", (4.0/3)*M_PI*pow(r, 3));
+}
+
+void areaTriangulo(){
+    float a, b, c;
+
+    printf("Insira os lados do triangulo:\n");
+
+    scanf("%f %f %f", &a, &b, &c);
+
+    float p = (a+b+c)/2;
+
+    printf("A area e: %f", sqrt(p*(p - a)*(p - b)*(p - c)));
+}
+
+void litrosPorHora(){
+    float km, l;
+    printf("Digite os km rodados e o combustivel consumido\n");
+
+    scanf("%f %f", &km, &l);
+
+    printf("Media de consumo: %f l/km", l/km);
+}
+
+void dinheiroFumo(){
+    int anos;
+    float cigPorDia, precoCarteira;
+
+    scanf("%d %f %f", &anos, &cigPorDia, &precoCarteira);
+
+    printf("%f", anos*365*cigPorDia*(precoCarteira/20));
+}
+
+void celciusFahreinheit(){
+    float celcius;
+
+    printf("Digite o valor em Celcius:\n");
+
+    scanf("%f", &celcius);
+
+    printf("%f °F", (9.0/5)*celcius-32);
+}
+
+void precoFinal(){
+    float precoCusto;
+
+    scanf("%f", &precoCusto);
+
+    printf("%f", precoCusto * 1.95);
+}
+
+int main(){
+    SetCallbackFunc(media);
+    SetCallbackFunc(quadrado);
+    SetCallbackFunc(imc);
+    SetCallbackFunc(troca);
+    SetCallbackFunc(converteTempo);
+    SetCallbackFunc(msTokmh);
+    SetCallbackFunc(litrosPorHora);
+    SetCallbackFunc(dinheiroFumo);
+    SetCallbackFunc(precoFinal);
+
+    SetCallbackFunc(distanciaEntreDoisPontos);
+    SetCallbackFunc(volumeEsfera);
+    SetCallbackFunc(areaTriangulo);
 
     int choice;
     do {
@@ -86,12 +162,19 @@ int main(){
       printf("3: inverte a com b\n");
       printf("4: Converte tempo\n");
       printf("5: Ms para Km/H\n");
-      printf(">5: Sair\n");
+      printf("6: Litros por hora\n");
+      printf("7: Preco final\n");
+
+      //questoes math.h
+      printf("8: Distancia entre dois pontos:\n");
+      printf("9: Volume de uma esfera:\n");
+      printf("10: Area triangulo:\n");
+      printf(">%d: Sair\n", indice);
 
       scanf("%d", &choice);
 
-      if(choice <= 5){
+      if(choice <= indice){
         exercicios[choice]();
       }
-    } while (choice <= 5);
+    } while (choice <= indice);
 }
